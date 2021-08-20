@@ -1,4 +1,19 @@
 #lista{
-    height: 15rem;
+    height:   auto ;
+    max-height: 20rem;
+    width: 11rem;
+    position: absolute;
     overflow:scroll;
+    background-color: white;
+    z-index: 1;
+    
+}
+
+/* oculta las barras de desplazamiento */
+::-webkit-scrollbar {
+    display:none;
+    
+}
+#info{
+    position: relative;
 }

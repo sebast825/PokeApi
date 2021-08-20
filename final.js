@@ -65,6 +65,7 @@ const outputHtml = matches =>{
 
 input.addEventListener('input',()=>{
     atr(input.value);
+   
 });
 
 
@@ -78,6 +79,7 @@ input.addEventListener('input',()=>{
 const searchPokemon=event=>{
     //lista limpia la lista recomendada
     lista.innerHTML='';
+    
     event.preventDefault();
     var valor = input.value;
     console.log(valor);
@@ -91,9 +93,12 @@ const searchPokemon=event=>{
 
         pokemonData(data);
         pokemonType(data);
+      
     };
     prom();
 };
+
+
 
 //trae los datos del pokemon
 const pokemonData= (data) =>{    
@@ -106,11 +111,15 @@ const pokemonData= (data) =>{
         const pokeNombre = document.createElement('div');
         const pokePunto = document.createElement('div');
 
+        nameDiv.innerHTML = data.name.toUpperCase();
+        img.setAttribute('src', data.sprites.front_default)
+
         pokeNombre.innerHTML = a.base_stat;
         pokePunto.innerHTML = a.stat.name;
         
-        pokeSta.appendChild(pokeNombre);
         pokeSta.appendChild(pokePunto);
+        pokeSta.appendChild(pokeNombre);
+        
         dataDiv.appendChild(pokeSta); 
     });    
 };
@@ -118,6 +127,7 @@ const pokemonData= (data) =>{
 //trae el tipo de pokemon
 const pokemonType=(data)=>{
     const {types}=data;
+    stats.innerHTML=''
     types.forEach(a=>{
 
         const pokeTypes = document.createElement('div');
