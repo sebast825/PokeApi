@@ -1,7 +1,8 @@
+// devuelve las caracteristicas del pokemon
 const input = document.getElementById('input');
 
 
-
+//recibe el valor del input y busca el valor que coincide
 const searchPokemon=event=>{
     event.preventDefault();
     var valor = input.value;
@@ -20,6 +21,7 @@ const searchPokemon=event=>{
     prom();
 };
 
+//trae los datos del pokemon
 const pokemonData= (data) =>{
     const {stats} = data;
     stats.forEach(a => {
@@ -27,7 +29,7 @@ const pokemonData= (data) =>{
     });    
 };
 
-
+//trae el tipo de pokemon
 const pokemonType=(data)=>{
     const {types}=data
     types.forEach(a=>{
