@@ -2,9 +2,9 @@ const inpu = document.getElementById('input');
 const datos = document.getElementById('datos');
 
 let pokeNames = [];
-
+//pasa por todos los pokemones y devuelve  pokeName data.results
 const filtro=  async elemento=>{
-    console.log(elemento)
+    
         
     const url = `https://pokeapi.co/api/v2/pokemon-form/?offset=20&limit=1117`;
 
@@ -12,49 +12,55 @@ const filtro=  async elemento=>{
     const rsta = await fetch(url);
     const data = await rsta.json();
     
-     return atr(data.results,elemento)
-    // return otrasPags(data)
+     //return atr(data.results,elemento)
+     return pokeName(data.results)
 
 }
-// filtro()
-// const almacenarNombres = data =>{
-//     data.forEach(e=>{
-//         pokeNames.push(e)
-//     })
-// }
 
-const atr = (data,elemento)=>{
+//almacena todos los nombres en pokeNames
+filtro('u')
+const pokeName = data=>{
     
-
-    let matches = data.filter(dat=>{
+    data.forEach(element => {
+        pokeNames.push(element.name)
+    });
+    
+}
+//busca en pokeNames las coincidencias con el input y las devuelve
+const atr = (elemento)=>{ 
+    let matches = pokeNames.filter(dat=>{
         const regex = new RegExp(`^${elemento}`, 'gi');
         console.log(elemento)
-        return dat.name.match(regex);
-    })
-    // data.forEach(dat => {
         
-    //     console.log(dat.name,elemento);
-// });
-    // if (matches>=5){
-        console.log(matches)
-    // }
-    
+            return dat.match(regex);
+        
+    })
+    if (elemento==''){
+        matches = [];
+        //el de arriba limpia el js su el busador esta bacio y el de abajo el html
+        datos.innerHTML='';
+    }
+    outputHtml(matches);
 };
 
+const outputHtml = matches =>{
+    if(matches.length > 0){
+        const html = matches.map(
+            match =>`
+            <div class = "card card-body mb-1">
+                <h4>${match} </h4>
+               
+            </div>
+            `
+        )
+    .join('');
+    datos.innerHTML= html
 
-// const asd = (dat,elemento)=>{
-//     dat.filter(d=>{
-//         const regex = new RegExp(`^${elemento}`, 'gi');
-//         return d.match(regex)
-//     })    
-// }
-
-
-
-
-
+    }
+   
+};
 
 inpu.addEventListener('input',()=>{
-    filtro(input.value)
+    atr(input.value)
 })
 
