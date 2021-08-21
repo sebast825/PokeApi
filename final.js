@@ -44,8 +44,8 @@ const coincide = (elemento)=>{
     });
     if (elemento==''){
         matches = [];
-        //el de arriba limpia el js su el busador esta bacio y el de abajo el html
-        lista.innerHTML='';
+        //el de arriba limpia el js su el busador esta bacio 
+        
     }
     outputHtml(matches);
 };
