@@ -1,9 +1,10 @@
-#lista{
-    height:   auto ;
+#pokeLista{
+    height:   10rem ;
     max-height: 20rem;
     width: 11rem;
+    
     position: absolute;
-    overflow:scroll;
+    overflow:hidden;
     background-color: white;
     z-index: 1;
     

@@ -1,5 +1,6 @@
 const input = document.getElementById('input');
 const lista = document.getElementById('lista');
+const pokeLista = document.getElementById('pokeLista');
 
 const nameDiv = document.getElementById('name');
 const img = document.getElementById('img');
@@ -51,20 +52,33 @@ const atr = (elemento)=>{
 const outputHtml = matches =>{
     
         const html = matches.map(
-            match =>`
-            <div class = "card card-body mb-1">
-                <h4>${match} </h4>
+            match =>
+            // console.log(match)
+           
+            // const option = document.createElement('option');
+            // option.innerHTML=match
+            // return option
+            
+        
+             `<option  value="${match}"> ${match}  </option>`
+            // `
+            // <div class = "card card-body mb-1">
+            //     <h4>${match} </h4>
                
-            </div>
-            `
+            // </div>
+            // `
         )
     // sin el join aparecen muy separados entre renglones 
-    .join('');
-    lista.innerHTML= html;
+    //  .join('');
+     pokeLista.innerHTML=html
+        
+    // lista.innerHTML= html;
+    // pokeLista.appendChild(html)
 };
 
 input.addEventListener('input',()=>{
     atr(input.value);
+    
    
 });
 
@@ -78,7 +92,7 @@ input.addEventListener('input',()=>{
 //recibe el valor del input y busca el valor que coincide
 const searchPokemon=event=>{
     //lista limpia la lista recomendada
-    lista.innerHTML='';
+    pokeLista.innerHTML='';
     
     event.preventDefault();
     var valor = input.value;
