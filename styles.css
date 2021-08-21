@@ -10,11 +10,94 @@
     
 }
 
-/* oculta las barras de desplazamiento */
-::-webkit-scrollbar {
-    display:none;
+
+
+
+form {
+    width: 200px;
+    margin: 20px auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+#info {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-family: 'Roboto Mono', monospace;
+    max-width: 700px; 
+    border-radius: 4px;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #FFF;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+/* le da la sombra a la caja  */
+#info::before {
+    content: '';
+    background: radial-gradient(black 33%, transparent 33%);
+    background-size: 3px 3px;
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: -1;
     
 }
-#info{
+
+#divImg {
     position: relative;
+    width: 200px;
+    border-radius: 50%;
+    margin: 10px auto;
 }
+
+#data div {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-around;
+    padding: 5px;
+    font-size: 18px;    
+}
+
+#data{
+    margin-top: center;
+    margin: 1rem;
+}
+
+#stats div {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px dashed black;
+    
+    
+}
+#stats{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+#img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+footer{
+    height: 2rem;
+}
+
+

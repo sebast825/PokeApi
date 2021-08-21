@@ -9,30 +9,29 @@
 </head>
 <!-- carga la funcion cuando carga la pagina solamente -->
 <body onload="filtro();">
-    <h1>POKe2</h1>
+    <h1>POKEMON</h1>
     
     <form action="" onsubmit="searchPokemon(event)">
-        <input type="text" name="pokemon" id="input" autocomplete="off" list="pokeLista">
-        
-            <datalist id="pokeLista">
-
-            </datalist>
+        <input type="text" name="pokemon" id="input" placeholder="Input Pokemon" autocomplete="off" list="pokeLista">
+        <datalist id="pokeLista"></datalist>
         
     </form>
     
-    <div >
-        <option value="" id="info"></option>
-        <div>
+    <div id= 'info'>
+        <div id="container">
+        <div id=divImg>
             <img src="" id="img" alt="">
         </div>
         <div id = 'name'></div>
         <div id='numId'></div>
         <div id='stats'></div>
+    </div>
+        
         <div id = 'data'></div>
     </div>
 
     
-   
+   <footer></footer>
     <script src="final.js"></script>
 </body>
 </html>

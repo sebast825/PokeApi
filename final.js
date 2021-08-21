@@ -2,6 +2,7 @@ const input = document.getElementById('input');
 const lista = document.getElementById('lista');
 const pokeLista = document.getElementById('pokeLista');
 
+const divImg = document.getElementById('divImg');
 const nameDiv = document.getElementById('name');
 const img = document.getElementById('img');
 const numId = document.getElementById('numId');
@@ -141,9 +142,9 @@ const imgColor =types=>{
     const colorOne = typeColors[types[0].type.name];
     //primero pregunta si tiene un segundo typo, si no tiene utiliza el default
     const colorTwo = types[1] ? typeColors[types[1].type.name]: typeColors.default;
-    img.style.background =  `radial-gradient(${colorTwo} 33%, ${colorOne} 33% `;
+    divImg.style.background =  `radial-gradient(${colorTwo} 33%, ${colorOne} 33% `;
     //le da el tamaño al fondo
-    img.style.backgroundSize = ` 5px 5px `;
+    divImg.style.backgroundSize = ` 5px 5px `;
 }
 
 //trae el tipo de pokemon y su color 
