@@ -35,7 +35,7 @@ const pokeName = data=>{
 }
 
 //busca en pokeNames las coincidencias con el input y las devuelve
-const atr = (elemento)=>{ 
+const coincide = (elemento)=>{ 
     
     let matches = pokeNames.filter(dat=>{
         const regex = new RegExp(`^${elemento}`, 'gi');                
@@ -78,7 +78,7 @@ const outputHtml = matches =>{
 };
 
 input.addEventListener('input',()=>{
-    atr(input.value);
+    coincide(input.value);
     
    
 });
@@ -105,15 +105,58 @@ const searchPokemon=event=>{
         const rsta = await fetch(url);
         const data = await rsta.json();
         console.log(data);
-
+        const {types} = data
         pokemonData(data);
-        pokemonType(data);
-      
+        pokemonType(types);
+        imgColor(types);
+        
     };
     prom();
 };
 
+const typeColors = {
+    electric: '#FFEA70',
+    normal: '#B09398',
+    fire: '#FF675C',
+    water: '#0596C7',
+    ice: '#AFEAFD',
+    rock: '#999799',
+    flying: '#7AE7C7',
+    grass: '#4A9681',
+    psychic: '#FFC6D9',
+    ghost: '#561D25',
+    bug: '#A2FAA3',
+    poison: '#795663',
+    ground: '#D2B074',
+    dragon: '#DA627D',
+    steel: '#1D8A99',
+    fighting: '#2F2F2F',
+    default: '#2A1A1F',
+    
+};
 
+//bakcground color de la img
+const imgColor =types=>{
+
+    const colorOne = typeColors[types[0].type.name];
+    //primero pregunta si tiene un segundo typo, si no tiene utiliza el default
+    const colorTwo = types[1] ? typeColors[types[1].type.name]: typeColors.default;
+    img.style.background =  `radial-gradient(${colorTwo} 33%, ${colorOne} 33% `;
+    //le da el tamaño al fondo
+    img.style.backgroundSize = ` 5px 5px `;
+}
+
+//trae el tipo de pokemon y su color 
+const pokemonType = types => {
+    stats.innerHTML=''
+    types.forEach(type=>{
+        const tipito = document.createElement('div');
+        tipito.style.color = typeColors[type.type.name]
+        tipito.innerHTML = type.type.name
+        stats.appendChild(tipito)
+    })
+   
+}
 
 //trae los datos del pokemon
 const pokemonData= (data) =>{    
@@ -139,15 +182,3 @@ const pokemonData= (data) =>{
     });    
 };
 
-//trae el tipo de pokemon
-const pokemonType=(data)=>{
-    const {types}=data;
-    stats.innerHTML=''
-    types.forEach(a=>{
-
-        const pokeTypes = document.createElement('div');
-        pokeTypes.textContent = a.type.name;
-        stats.appendChild(pokeTypes);
-        console.log(a.type.name);        
-    });
-};
