@@ -4,6 +4,7 @@ const pokeLista = document.getElementById('pokeLista');
 
 const nameDiv = document.getElementById('name');
 const img = document.getElementById('img');
+const numId = document.getElementById('numId');
 const dataDiv = document.getElementById('data');
 const stats = document.getElementById('stats');
 
@@ -117,7 +118,7 @@ const searchPokemon=event=>{
 //trae los datos del pokemon
 const pokemonData= (data) =>{    
     const {stats} = data;
-    console.log(data.species.name)
+    numId.textContent= `N° ${data.id} `
     dataDiv.innerHTML='';
     stats.forEach(a => {
         
