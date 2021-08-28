@@ -2,6 +2,7 @@ const input = document.getElementById('input');
 const lista = document.getElementById('lista');
 const pokeLista = document.getElementById('pokeLista');
 
+const datosContenedor = document.getElementById('error');
 const divImg = document.getElementById('divImg');
 const nameDiv = document.getElementById('name');
 const img = document.getElementById('img');
@@ -54,42 +55,19 @@ const coincide = (elemento)=>{
 const outputHtml = matches =>{
     
         const html = matches.map(
-            match =>
-            // console.log(match)
-           
-            // const option = document.createElement('option');
-            // option.innerHTML=match
-            // return option
-            
-        
-             `<option  value="${match}"> ${match}  </option>`
-            // `
-            // <div class = "card card-body mb-1">
-            //     <h4>${match} </h4>
-               
-            // </div>
-            // `
+            match =>           
+            `<option  value="${match}"> ${match}  </option>`          
         )
-    // sin el join aparecen muy separados entre renglones 
-    //  .join('');
-     pokeLista.innerHTML=html
-        
-    // lista.innerHTML= html;
-    // pokeLista.appendChild(html)
+   
+     pokeLista.innerHTML=html    
 };
 
 input.addEventListener('input',()=>{
-    coincide(input.value);
-    
-   
+    coincide(input.value);     
 });
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-
 
 //recibe el valor del input y busca el valor que coincide
 const searchPokemon=event=>{
@@ -98,19 +76,27 @@ const searchPokemon=event=>{
     
     event.preventDefault();
     var valor = input.value;
+    
     console.log(valor);
     
     const url = `https://pokeapi.co/api/v2/pokemon/${valor.toLowerCase()}` ;
-
+    
     async function prom(){
-        const rsta = await fetch(url);
-        const data = await rsta.json();
-        console.log(data);
-        const {types} = data
-        pokemonData(data);
-        pokemonType(types);
-        imgColor(types);
         
+        try{  
+        
+            const rsta = await fetch(url);
+            const data = await rsta.json();
+            console.log(data);
+            const {types} = data
+            pokemonData(data);
+            pokemonType(types);
+            imgColor(types);
+            }
+    catch{
+        
+        window.alert( `No pudimos encontrar tu pokemon, en caso de que tenga un "-" en su nombre. Prueba ingresar la primera parte del nombre`)
+    }
     };
     prom();
 };
@@ -142,7 +128,7 @@ const imgColor =types=>{
     const colorOne = typeColors[types[0].type.name];
     //primero pregunta si tiene un segundo typo, si no tiene utiliza el default
     const colorTwo = types[1] ? typeColors[types[1].type.name]: typeColors.default;
-    divImg.style.background =  `radial-gradient(${colorTwo} 33%, ${colorOne} 33% `;
+    divImg.style.background =  `radial-gradient(${colorTwo} 33%, ${colorOne} 33%) `;
     //le da el tamaño al fondo
     divImg.style.backgroundSize = ` 5px 5px `;
 }
