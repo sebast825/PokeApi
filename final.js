@@ -88,15 +88,39 @@ const searchPokemon=event=>{
             const rsta = await fetch(url);
             const data = await rsta.json();
             console.log(data);
-            const {types} = data
+            const {types} = data;
             pokemonData(data);
             pokemonType(types);
             imgColor(types);
             }
     catch{
-        
-        window.alert( `No pudimos encontrar tu pokemon, en caso de que tenga un "-" en su nombre. Prueba ingresar la primera parte del nombre`)
-    }
+        try{
+        var sinGuion=[];
+
+        for(i=0; i<valor.length;i++){
+            if (valor[i]=="-"){
+                break;
+            }   
+            else{
+                sinGuion+=(valor[i]);
+            } 
+            console.log(sinGuion);
+        }
+
+        const usa = `https://pokeapi.co/api/v2/pokemon/${sinGuion.toLowerCase()}` ;
+        const rsta = await fetch(usa);
+            const data = await rsta.json();
+            console.log(data);
+            const {types} = data;
+            pokemonData(data);
+            pokemonType(types);
+            imgColor(types);
+            }
+            catch{
+                window.alert( `Lo siento, no pudimos encontrar el pokemon.`);
+   
+            };
+     };
     };
     prom();
 };
