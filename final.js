@@ -73,57 +73,58 @@ input.addEventListener('input',()=>{
 const searchPokemon=event=>{
     //lista limpia la lista recomendada
     pokeLista.innerHTML='';
-    
-    event.preventDefault();
-    var valor = input.value;
-    
-    console.log(valor);
-    
-    const url = `https://pokeapi.co/api/v2/pokemon/${valor.toLowerCase()}` ;
-    
-    async function prom(){
-        
-        try{  
-        
-            const rsta = await fetch(url);
-            const data = await rsta.json();
-            console.log(data);
-            const {types} = data;
-            pokemonData(data);
-            pokemonType(types);
-            imgColor(types);
-            }
-    catch{
-        try{
-        var sinGuion=[];
 
-        for(i=0; i<valor.length;i++){
-            if (valor[i]=="-"){
-                break;
-            }   
-            else{
-                sinGuion+=(valor[i]);
-            } 
+    event.preventDefault();
+    promisePokemon()
+     
+};
+function promisePokemon(namePok = input.value){
+    var valor = namePok;
+    const url = fetch(`https://pokeapi.co/api/v2/pokemon/${valor.toLowerCase()}`) 
+    
+    .then(function(elem){  
+        return elem.json()
+        // const  {types} = elem;
+        
+        
+    })  
+    .then(function(elem){
+         const {types} = elem;
+        pokemonData(elem);
+        pokemonType(types);
+        imgColor(types);
+    })  
+    .catch(err=>{
+        cortarName(valor)
+    })
+}
+
+let seCortaName=true;
+function cortarName(valor){
+    if(seCortaName==false){
+        seCortaName==true;
+        window.alert( `Lo siento, no pudimos encontrar el pokemon.`);
+        //como pauseo estoooo
+         stop
+    }else{
+        
+        seCortaName==false
+    }
+
+    var sinGuion=[];
+        
+    for(i=0; i<valor.length;i++){
+        if (valor[i]=="-"){
+            break;
+        }   
+        else{
+            sinGuion+=(valor[i]);
+        } 
             console.log(sinGuion);
         }
-
-        const usa = `https://pokeapi.co/api/v2/pokemon/${sinGuion.toLowerCase()}` ;
-        const rsta = await fetch(usa);
-            const data = await rsta.json();
-            console.log(data);
-            const {types} = data;
-            pokemonData(data);
-            pokemonType(types);
-            imgColor(types);
-            }
-            catch{
-                window.alert( `Lo siento, no pudimos encontrar el pokemon.`);
-   
-            };
-     };
-    };
-    prom();
-};
+    promisePokemon(sinGuion)
+    
+}
 
 const typeColors = {
     electric: '#FFEA70',
