@@ -16,20 +16,27 @@ const stats = document.getElementById('stats');
 let pokeNames = [];
 
 //pasa por todos los pokemones y devuelve  pokeName data.results
-const filtro=  async ()=>{
-    const url = `https://pokeapi.co/api/v2/pokemon-form/?offset=20&limit=1118`;
-
-    const rsta = await fetch(url);
-    const data = await rsta.json();
-     //return atr(data.results,elemento)
-    return pokeName(data.results);
+//lo hace una vez al cargar la pag
+const filtro=  ()=>{
+    const url = fetch(`https://pokeapi.co/api/v2/pokemon-form/?offset=20&limit=1118`)
+        .then(function(rsta){
+            return rsta.json();
+        })
+        .then(function(rsta){            
+            return pokeName(rsta.results);
+            
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+   
 
 }
 
 //almacena todos los nombres en pokeNames
 
 const pokeName = data=>{
-
+    console.log(data)
     data.forEach(element => {
         
         pokeNames.push(element.name) ;
