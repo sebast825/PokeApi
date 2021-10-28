@@ -68,7 +68,7 @@ input.addEventListener('input',()=>{
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-
+let seCortaName=true;
 //recibe el valor del input y busca el valor que coincide
 const searchPokemon=event=>{
     //lista limpia la lista recomendada
@@ -79,12 +79,12 @@ const searchPokemon=event=>{
      
 };
 function promisePokemon(namePok = input.value){
+    
     var valor = namePok;
     const url = fetch(`https://pokeapi.co/api/v2/pokemon/${valor.toLowerCase()}`) 
     
     .then(function(elem){  
-        return elem.json()
-        // const  {types} = elem;
+        return elem.json()      
         
         
     })  
@@ -95,22 +95,21 @@ function promisePokemon(namePok = input.value){
         imgColor(types);
     })  
     .catch(err=>{
-        cortarName(valor)
+        if(seCortaName==false){
+            seCortaName==true;
+            window.alert( `Lo siento, no pudimos encontrar el pokemon.`);
+            
+        }else{        
+            seCortaName=false            
+            cortarName(valor)
+        }
+        
     })
 }
 
-let seCortaName=true;
-function cortarName(valor){
-    if(seCortaName==false){
-        seCortaName==true;
-        window.alert( `Lo siento, no pudimos encontrar el pokemon.`);
-        //como pauseo estoooo
-         stop
-    }else{
-        
-        seCortaName==false
-    }
-
+//si el nombre tiene un guion lo corta hasta la primera parte antes del guion
+//hay algunos que no estan en el listado
+function cortarName(valor){   
     var sinGuion=[];
         
     for(i=0; i<valor.length;i++){
