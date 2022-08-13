@@ -68,7 +68,9 @@ const outputHtml = matches =>{
    
      pokeLista.innerHTML=html    
 };
-
+input.addEventListener('click',()=>{
+    outputHtml(pokeNames)
+})
 input.addEventListener('input',()=>{
     coincide(input.value);     
 });
@@ -199,4 +201,5 @@ const pokemonData= (data) =>{
         dataDiv.appendChild(pokeSta); 
     });    
 };
+
 
