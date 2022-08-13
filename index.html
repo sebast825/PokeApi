@@ -15,9 +15,12 @@
     <h1>POKEMON</h1>
     
     <form action="" onsubmit="searchPokemon(event)">
-        <input type="text" name="pokemon" id="input" placeholder="Input Pokemon" autocomplete="off" list="pokeLista">
-        <datalist id="pokeLista"></datalist>
-        <button class="menu_clasico menu_btn menu_btn_Css" type="submit">Search</button>
+        <div class="formulario">
+            <input type="text" name="pokemon" id="input" placeholder="Ingresar un pokemon" autocomplete="off" list="pokeLista">
+            <datalist id="pokeLista"></datalist>
+            <button class="menu_clasico menu_btn menu_btn_Css" type="submit">Buscar</button>
+        </div>
+        
     </form>
     
     <div id= 'info'>

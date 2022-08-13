@@ -29,7 +29,8 @@ form {
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 10px ;
+    box-sizing: border-box;
 }
 
 #info{
@@ -48,6 +49,7 @@ input {
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
+    box-shadow: 0px 1px 5px #700;
 }
 
 /* le da la sombra a la caja  */
@@ -121,4 +123,13 @@ footer{
     h1{
         font-size: 4rem;
     }
+}
+
+.formulario{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
 }

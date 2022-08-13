@@ -6,22 +6,23 @@ background-color: white;
 	font-size: 1rem;
 	font-weight: 500;
 	padding: 0.5rem;
-	width: 15vw;
+	width: 100%;
 	margin: .2rem 0;
-	box-shadow: 0 10px 15px #700;
+	box-shadow: 0 5px 15px #700;
 	border: none;
 	border-radius: 2px ;
 	z-index: 100;
 	transition: all .2s ease;
+   padding: 10px;
 
 
 }
 .menu_btn_Css:hover{
-	background-color: #800;
+	background-color: #700;
 	border-color: #fff;
 	color: #fff;
 	transition: all .1s ease-in;
-	box-shadow: 0 15px 15px #600;
+	box-shadow: 0 10px 15px #800;
 
 
 }
