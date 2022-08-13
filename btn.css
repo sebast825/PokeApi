@@ -17,11 +17,11 @@ background-color: white;
 
 }
 .menu_btn_Css:hover{
-	background-color: #000;
+	background-color: #800;
 	border-color: #fff;
 	color: #fff;
 	transition: all .1s ease-in;
-	box-shadow: 0 15px 15px #400;
+	box-shadow: 0 15px 15px #600;
 
 
 }
