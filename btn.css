@@ -1,0 +1,52 @@
+.menu_btn_Css{
+	position: relative;
+	display: inline-block;
+background-color: white;
+	/* border: 2px solid black; */
+	font-size: 1rem;
+	font-weight: 500;
+	padding: 0.5rem;
+	width: 15vw;
+	margin: .2rem 0;
+	box-shadow: 0 10px 15px #700;
+	border: none;
+	border-radius: 2px ;
+	z-index: 100;
+	transition: all .2s ease;
+
+
+}
+.menu_btn_Css:hover{
+	background-color: #000;
+	border-color: #fff;
+	color: #fff;
+	transition: all .1s ease-in;
+	box-shadow: 0 15px 15px #400;
+
+
+}
+
+.menu_btn_Css::after{
+	transition: all .8s ease ;
+	content: "";
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	left: 0;	
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	transform: scale(1);
+	 z-index: -1;  
+
+	 background-color: #fff;
+	 
+}
+.menu_btn_Css:hover::after{
+	/* background-color: #fff;	 */
+	/* background-color: #fff; */
+	transform: scaleX(1.1) scaleY(1.5);
+	opacity: 0;
+	
+	
+}

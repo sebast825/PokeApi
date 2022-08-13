@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="btn.css">
 </head>
 <!-- carga la funcion cuando carga la pagina solamente -->
 <body onload="filtro();">
 
-    <header><a href="https://presentaiconsm.netlify.app/">Portafolio</a>    </header>
+    <header><a href="https://presentaiconsm.netlify.app/">Portafolio</a></header>
     <h1>POKEMON</h1>
     
     <form action="" onsubmit="searchPokemon(event)">
         <input type="text" name="pokemon" id="input" placeholder="Input Pokemon" autocomplete="off" list="pokeLista">
         <datalist id="pokeLista"></datalist>
-        
+        <button class="menu_clasico menu_btn menu_btn_Css" type="submit">Search</button>
     </form>
     
     <div id= 'info'>
