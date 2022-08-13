@@ -68,7 +68,7 @@ const outputHtml = matches =>{
    
      pokeLista.innerHTML=html    
 };
-input.addEventListener('click',()=>{
+input.addEventListener('mouseover',()=>{
     outputHtml(pokeNames)
 })
 input.addEventListener('input',()=>{
