@@ -8,7 +8,7 @@ background-color: white;
 	padding: 0.5rem;
 	width: 100%;
 	margin: .2rem 0;
-	box-shadow: 0 5px 15px #700;
+	box-shadow: 0 8px 15px #700;
 	border: none;
 	border-radius: 2px ;
 	z-index: 100;
@@ -18,11 +18,11 @@ background-color: white;
 
 }
 .menu_btn_Css:hover{
-	background-color: #700;
+	background-color: #922;
 	border-color: #fff;
 	color: #fff;
 	transition: all .1s ease-in;
-	box-shadow: 0 10px 15px #800;
+	box-shadow: 0 5px 15px #333;
 
 
 }
